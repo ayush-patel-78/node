@@ -47,15 +47,23 @@
 //   console.log('invalid input')
 // }
 
+// const fs = require('fs')
+// const path = require('path')
+// const dirPath = path.join(__dirname, 'files')
+// for (i = 0; i < 5; i++) {
+//   fs.writeFileSync(`${dirPath}/hello${i}.txt`, `this is simple text file`)
+// }
+
+// fs.readdir(dirPath, (err, files) => {
+//   files.forEach((items) => {
+//     console.log(`file name is ${items}`)
+//   })
+// })
+
+//  CRUD operation in file system
+
 const fs = require('fs')
 const path = require('path')
-const dirPath = path.join(__dirname, 'files')
-for (i = 0; i < 5; i++) {
-  fs.writeFileSync(`${dirPath}/hello${i}.txt`, `this is simple text file`)
-}
-
-fs.readdir(dirPath, (err, files) => {
-  files.forEach((items) => {
-    console.log(`file name is ${items}`)
-  })
-})
+const dirPath = path.join(__dirname, 'crud')
+const filePath = `${dirPath}/apple.txt`
+fs.writeFileSync(filePath, 'This is a simple text file')
