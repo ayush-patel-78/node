@@ -53,3 +53,9 @@ const dirPath = path.join(__dirname, 'files')
 for (i = 0; i < 5; i++) {
   fs.writeFileSync(`${dirPath}/hello${i}.txt`, `this is simple text file`)
 }
+
+fs.readdir(dirPath, (err, files) => {
+  files.forEach((items) => {
+    console.log(`file name is ${items}`)
+  })
+})
