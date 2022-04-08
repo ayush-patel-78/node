@@ -62,8 +62,33 @@
 
 //  CRUD operation in file system
 
-const fs = require('fs')
-const path = require('path')
-const dirPath = path.join(__dirname, 'crud')
-const filePath = `${dirPath}/apple.txt`
-fs.writeFileSync(filePath, 'This is a simple text file')
+// const fs = require('fs')
+// const path = require('path')
+// const dirPath = path.join(__dirname, 'crud')
+// const filePath = `${dirPath}/apple.txt`
+
+// creating a file
+
+// fs.writeFileSync(filePath, 'This is a simple text file')
+
+// reading a file
+
+// fs.readFile(filePath, 'utf8', (err, item) => {
+//   console.log(item)
+// })
+
+// updating a file
+
+// fs.appendFile(filePath, " and it's name is apple.txt", (err) => {
+//   if (!err) console.log('file is updated')
+// })
+
+// renaming a file
+
+// fs.rename(filePath, `${dirPath}/fruit.txt`, (err) => {
+//   if (!err) console.log('file name is updated')
+// })
+
+// deleting a file
+
+// fs.unlinkSync(`${dirPath}/fruit.txt`)
