@@ -194,29 +194,46 @@
 
 // Route level MiddleWare
 
-const express = require('express')
+// const express = require('express')
 
-const app = express()
-const path = require('path')
+// const app = express()
+// const path = require('path')
 
-const publicPath = path.join(__dirname, 'public')
-const reqFilter = require('./middleware.js')
-const route = express.Router()
+// const publicPath = path.join(__dirname, 'public')
+// const reqFilter = require('./middleware.js')
+// const route = express.Router()
 
-// app.use(reqFilter)
-route.use(reqFilter)
+// // app.use(reqFilter)
+// route.use(reqFilter)
 
-app.get('/', (req, resp) => {
-  resp.sendFile(`${publicPath}/index.html`)
-})
+// app.get('/', (req, resp) => {
+//   resp.sendFile(`${publicPath}/index.html`)
+// })
 
-app.get('/about', reqFilter, (req, resp) => {
-  resp.sendFile(`${publicPath}/about.html`)
-})
+// app.get('/about', reqFilter, (req, resp) => {
+//   resp.sendFile(`${publicPath}/about.html`)
+// })
 
-route.get('/contact', (req, resp) => {
-  resp.sendFile(`${publicPath}/contact.html`)
-})
-app.use('/', route)
+// route.get('/contact', (req, resp) => {
+//   resp.sendFile(`${publicPath}/contact.html`)
+// })
+// app.use('/', route)
 
-app.listen(3000)
+// app.listen(3000)
+
+// connecting mongodb from nodejs
+
+const { MongoClient } = require('mongodb')
+const url = 'mongodb://localhost:27017'
+const database = 'e-comm'
+const client = new MongoClient(url)
+
+async function getData() {
+  let result = await client.connect()
+  let db = result.db(database)
+  let collection = db.collection('products')
+  let response = await collection.find({}).toArray()
+  console.log(response)
+}
+
+getData()
