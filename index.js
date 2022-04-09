@@ -94,15 +94,29 @@
 // fs.unlinkSync(`${dirPath}/fruit.txt`)
 
 // express js introduction
+
+// const express = require('express')
+// const app = express()
+// app.get('', (req, res) => {
+//   console.log(req.query.name)
+//   res.send('Hello, this is home page ')
+// })
+// app.get('/about', (req, res) => {
+//   res.send(
+//     `<input type="text" placeholder="user name" value="${req.query.name}"/>`,
+//   )
+// })
+// app.get('/help', (req, res) => {
+//   res.send('Hello , this is help page')
+// })
+// app.listen(3000)
+
+// accessing HTML files using express js
+
 const express = require('express')
 const app = express()
-app.get('', (req, res) => {
-  res.send('Hello, this is home page ')
-})
-app.get('/about', (req, res) => {
-  res.send('Hello , this is about page')
-})
-app.get('/help', (req, res) => {
-  res.send('Hello , this is help page')
-})
+const path = require('path')
+
+const publicPath = path.join(__dirname, 'public')
+app.use(express.static(publicPath))
 app.listen(3000)
