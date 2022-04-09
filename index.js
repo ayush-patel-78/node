@@ -120,6 +120,8 @@ const path = require('path')
 const publicPath = path.join(__dirname, 'public')
 // app.use(express.static(publicPath))
 
+app.set('view engine', 'ejs')
+
 app.get('/', (req, resp) => {
   resp.sendFile(`${publicPath}/index.html`)
 })
@@ -132,7 +134,16 @@ app.get('/help', (req, resp) => {
   resp.sendFile(`${publicPath}/help.html`)
 })
 
+app.get('/profile', (req, resp) => {
+  const user = {
+    name: 'Ayush patel',
+    email: 'ayush@gmail.com',
+    city: 'jabalpur',
+  }
+  resp.render('profile', { user })
+})
 app.get('*', (req, resp) => {
   resp.sendFile(`${publicPath}/nopagefound.html`)
 })
+
 app.listen(3000)
