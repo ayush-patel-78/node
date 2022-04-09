@@ -139,6 +139,18 @@ app.get('/profile', (req, resp) => {
     name: 'Ayush patel',
     email: 'ayush@gmail.com',
     city: 'jabalpur',
+    skills: [
+      'C/C++',
+      'Python',
+      'Java SE',
+      'Java EE',
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'JQuery',
+      'AJAX',
+      'Bootstrap',
+    ],
   }
   resp.render('profile', { user })
 })
