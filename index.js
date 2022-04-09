@@ -113,49 +113,81 @@
 
 // accessing HTML files using express js
 
+// const express = require('express')
+// const app = express()
+// const path = require('path')
+
+// const publicPath = path.join(__dirname, 'public')
+// app.use(express.static(publicPath))
+
+// app.set('view engine', 'ejs')
+
+// app.get('/', (req, resp) => {
+//   resp.sendFile(`${publicPath}/index.html`)
+// })
+
+// app.get('/about', (req, resp) => {
+//   resp.sendFile(`${publicPath}/about.html`)
+// })
+
+// app.get('/help', (req, resp) => {
+//   resp.sendFile(`${publicPath}/help.html`)
+// })
+
+// app.get('/profile', (req, resp) => {
+//   const user = {
+//     name: 'Ayush patel',
+//     email: 'ayush@gmail.com',
+//     city: 'jabalpur',
+//     skills: [
+//       'C/C++',
+//       'Python',
+//       'Java SE',
+//       'Java EE',
+//       'HTML',
+//       'CSS',
+//       'JavaScript',
+//       'JQuery',
+//       'AJAX',
+//       'Bootstrap',
+//     ],
+//   }
+//   resp.render('profile', { user })
+// })
+// app.get('/login', (req, resp) => {
+//   resp.render('login')
+// })
+// app.get('*', (req, resp) => {
+//   resp.sendFile(`${publicPath}/nopagefound.html`)
+// })
+
+// app.listen(3000)
+
+// Application level middleware
+
 const express = require('express')
+
 const app = express()
 const path = require('path')
 
 const publicPath = path.join(__dirname, 'public')
-// app.use(express.static(publicPath))
 
-app.set('view engine', 'ejs')
+const reqFilter = (req, resp, next) => {
+  if (!req.query.age) {
+    resp.send('Please provide age')
+  } else if (req.query.age < 18) {
+    resp.send('You cannot access this page')
+  } else {
+    next()
+  }
+}
+app.use(reqFilter)
 
 app.get('/', (req, resp) => {
   resp.sendFile(`${publicPath}/index.html`)
 })
 
 app.get('/about', (req, resp) => {
-  resp.sendFile(`${publicPath}/about.html`)
+  resp.sendFile(`${publicPath}about.html`)
 })
-
-app.get('/help', (req, resp) => {
-  resp.sendFile(`${publicPath}/help.html`)
-})
-
-app.get('/profile', (req, resp) => {
-  const user = {
-    name: 'Ayush patel',
-    email: 'ayush@gmail.com',
-    city: 'jabalpur',
-    skills: [
-      'C/C++',
-      'Python',
-      'Java SE',
-      'Java EE',
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'JQuery',
-      'AJAX',
-      'Bootstrap',
-    ],
-  }
-  resp.render('profile', { user })
-})
-app.get('*', (req, resp) => {
-  resp.sendFile(`${publicPath}/nopagefound.html`)
-})
-
 app.listen(3000)

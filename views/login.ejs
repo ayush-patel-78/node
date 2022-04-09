@@ -4,18 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile page</title>
+    <title>Login page</title>
 </head>
 <body>
     <%- include('common/header')%>
-    <h1>Welcome <%= user.name%></h1>
-    <h3>email: <%= user.email%></h3>
-    <h3>city: <%= user.city%></h3>
-    <h3>Skills: <% user.skills.forEach((item)=>{%>
-        <li><%=item%></li>
-        <% })%>
-    </h3>    
-
+    <h1>This is a login page</h1>
     
 </body>
 </html>
