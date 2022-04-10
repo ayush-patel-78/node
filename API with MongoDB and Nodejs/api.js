@@ -21,4 +21,12 @@ app.post('/', async (req, resp) => {
   const data = await db.insertMany(req.body)
   resp.send(data)
 })
+
+//PUT API method
+
+app.put('/', async (req, resp) => {
+  const db = await dbConnect()
+  const data = await (await db).updateOne({ name: 'max 3' }, { $set: req.body })
+  resp.send('result updated:' + data)
+})
 app.listen(3000)
